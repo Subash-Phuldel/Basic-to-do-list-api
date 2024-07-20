@@ -4,7 +4,7 @@ const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      requried: [true, "Task title is missing"],
+      required: [true, "Task title is missing"],
       trim: true,
     },
     description: {
@@ -14,6 +14,10 @@ const taskSchema = new mongoose.Schema(
     addedDate: {
       type: Date,
       default: Date.now(),
+    },
+    complete: {
+      type: Boolean,
+      default: false,
     },
   },
   { toJSON: { virtuals: true }, toObject: { virtuals: true } }
