@@ -31,3 +31,21 @@ exports.getTask = catchAsync(async (req, res, next) => {
     task,
   });
 });
+
+exports.updateTask = catchAsync(async (req, res, next) => {
+  const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
+  res.status(200).json({
+    status: "success",
+    task,
+  });
+});
+
+exports.deleteTask = catchAsync(async (req, res, next) => {
+  await Task.findByIdAndDelete(req.params.id);
+  res.status(204).json({
+    status: "success",
+  });
+});
