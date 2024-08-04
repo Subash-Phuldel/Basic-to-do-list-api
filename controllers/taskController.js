@@ -14,7 +14,7 @@ exports.createTask = catchAsync(async (req, res, next) => {
 });
 
 exports.getAllTasks = catchAsync(async (req, res, next) => {
-  const tasks = await Task.find({});
+  const tasks = await Task.find();
   res.status(200).json({
     status: "success",
     length: tasks.length,
